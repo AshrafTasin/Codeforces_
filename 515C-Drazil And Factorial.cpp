@@ -1,6 +1,6 @@
 /*----------------------|
 / Author : Ashraf Tasin |
-/ Date   :   20.01.19   |
+/ Date   :   02.02.19   |
 /----------------------*/
 
 #include<bits/stdc++.h>
@@ -11,9 +11,9 @@
 #define M it=m.begin(),it!=m.end(),it++
 #define flash ios :: sync_with_stdio(false); cin.tie(0); cout.tie(0);
 #define db double
-
+#define endl "\n"
 #define mnm pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>
-#define show for(int i=0;i<v.size();i++) cout << v[i] << " ";
+#define show for(int i=0;i<v.size();i++) cout << v[i];
 using namespace std;
 
 
@@ -35,30 +35,50 @@ int y[] = {-1, 0, 1, 0}; */
 int main()
 {
     int n;
-    cin >> n;
+    string s;
 
+    cin >> n >> s;
     vector<int> v;
 
     for(int i=0;i<n;i++)
     {
-        int x;
-        cin >> x;
-        v.pb(x);
+        if(s[i]=='1' or s[i]=='0') continue;
+
+        else if(s[i]=='4')
+        {
+            v.pb(3);
+            v.pb(2);
+            v.pb(2);
+        }
+
+        else if(s[i]=='6')
+        {
+            v.pb(5);
+            v.pb(3);
+        }
+
+        else if(s[i]=='8')
+        {
+             v.pb(7);
+             v.pb(2);
+             v.pb(2);
+             v.pb(2);
+        }
+
+        else if(s[i]=='9')
+        {
+             v.pb(7);
+             v.pb(3);
+             v.pb(3);
+             v.pb(2);
+        }
+
+        else v.pb(s[i]-'0');
     }
 
-    if(n==2) return(cout << (v[0]+v[1])*(v[0]+v[1]) << endl,0);
+    sort(all,greater<int>());
 
-    sort(all);
-
-    ll ans=0,j=n-1;
-
-    for(int i=0;i<n/2;i++)
-    {
-        ans+=(v[i]+v[j])*(v[i]+v[j]);
-        j--;
-    }
-
-    cout << ans << endl;
+    show;
 
     return 0;
 }

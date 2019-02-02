@@ -1,6 +1,6 @@
 /*----------------------|
 / Author : Ashraf Tasin |
-/ Date   :   20.01.19   |
+/ Date   :   02.02.19   |
 /----------------------*/
 
 #include<bits/stdc++.h>
@@ -11,7 +11,7 @@
 #define M it=m.begin(),it!=m.end(),it++
 #define flash ios :: sync_with_stdio(false); cin.tie(0); cout.tie(0);
 #define db double
-
+#define endl "\n"
 #define mnm pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>
 #define show for(int i=0;i<v.size();i++) cout << v[i] << " ";
 using namespace std;
@@ -34,31 +34,47 @@ int y[] = {-1, 0, 1, 0}; */
 
 int main()
 {
-    int n;
+    int n,m;
     cin >> n;
 
-    vector<int> v;
+    vector<int> boy,girl;
 
     for(int i=0;i<n;i++)
     {
         int x;
         cin >> x;
-        v.pb(x);
+        boy.pb(x);
     }
 
-    if(n==2) return(cout << (v[0]+v[1])*(v[0]+v[1]) << endl,0);
+    cin >> m;
 
-    sort(all);
-
-    ll ans=0,j=n-1;
-
-    for(int i=0;i<n/2;i++)
+    for(int i=0;i<m;i++)
     {
-        ans+=(v[i]+v[j])*(v[i]+v[j]);
-        j--;
+        int x;
+        cin >> x;
+        girl.pb(x);
     }
 
-    cout << ans << endl;
+    sort(boy.begin(),boy.end());
+    sort(girl.begin(),girl.end());
+
+    int res=0;
+
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<m;j++)
+        {
+            if(abs(boy[i]-girl[j])<=1)
+            {
+                res++;
+                boy[i]=INT_MAX;
+                girl[j]=INT_MAX;
+            }
+        }
+    }
+
+    cout << res << endl;
+
 
     return 0;
 }
