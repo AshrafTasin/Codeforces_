@@ -1,6 +1,6 @@
 /*----------------------|
 / Author : Ashraf Tasin |
-/ Date   :   08.11.18   |
+/ Date   :   25.07.18   |
 /----------------------*/
 
 #include<bits/stdc++.h>
@@ -12,7 +12,7 @@
 #define db double
 #define mx 100008
 #define endl "\n"
-#define mnm pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>
+#define mnm pair<int,int>, vector< pair<int,int> >, greater< pair<int,int> >
 #define show for(int i=0;i<v.size();i++) cout << v[i] << " ";
 using namespace std;
 
@@ -38,10 +38,10 @@ int par[mx];
 
 int main()
 {
-    vector<pair<int,int>> v[mx];
+    vector< pair<int,int> > v[mx];
     vector<int> path;
     stack<int> s;
-    priority_queue<mnm> q;
+    priority_queue< mnm > q;
     int node,edge,curv;
     scanf("%d%d",&node,&edge);
 
