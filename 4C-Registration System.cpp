@@ -1,6 +1,6 @@
 /*----------------------|
 / Author : Ashraf Tasin |
-/ Date   :   27.07.19   |
+/ Date   :   08.08.19   |
 /----------------------*/
 
 #include<bits/stdc++.h>
@@ -14,14 +14,12 @@
 #define mnm pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>
 #define show for(int i=0;i<v.size();i++) cout << v[i] << " ";
 #define eps 1e-6
-#define mx 100004
+#define mx 100008
 using namespace std;
 
-
-/*King  Moves
-
+/*King Moves
 int dx[]={-1,1,-1,0,1,-1,0,1};
-int dy[]={0,0,-1,-1,-1,1,1,1};    */
+int dy[]={0,0,-1,-1,-1,1,1,1}; */
 
 /*Knight Moves
 
@@ -35,37 +33,30 @@ int y[] = {-1, 0, 1, 0}; */
 
 int main()
 {
-    flash
+    freopen("in.txt","r",stdin);
+    freopen("out.txt","w",stdout);
 
-    int n,m;
-    cin >> n >> m;
-    bool flag[n+20]={0};
+    int x;
+    cin >> x;
 
-    while(m--)
+    map<string,int> m;
+
+    while(x--)
     {
-        int x,y;
-        cin >> x >> y;
-        flag[x]=1;
-        flag[y]=1;
-    }
+        string s;
+        cin >> s;
 
-    int ans=0;
-
-    for(int i=1;i<=n;++i)
-    {
-        if(flag[i]==0)
+        if(m.count(s)==0) 
         {
-            ans=i;
-            break;
+            cout << "OK" << endl;
+            m[s]++;
         }
-    }
 
-    cout << n-1 << endl;
-
-    for(int i=1;i<=n;++i)
-    {
-        if(i==ans) continue;
-        else cout << ans << " " << i << endl;
+        else 
+        {
+            cout << s << m[s] << endl;
+            m[s]++;
+        }
     }
 
     return 0;

@@ -33,40 +33,57 @@ int dy[] = { 1, 2, 2, 1, -1, -2, -2, -1 }; */
 int x[] = {0, 1, 0, -1};
 int y[] = {-1, 0, 1, 0}; */
 
+ll cost[100006];
+bool vis[1000006];
+vector<int> v[1000006];
+ll cst=0;
+
+
+int dfs(int node)
+{
+    cst=min(cst,cost[node]);
+    vis[node]=1;
+
+    int sz=v[node].size();
+
+    for(int i=0;i<sz;++i)
+    {
+        if(!vis[v[node][i]]) dfs(v[node][i]);
+    }
+}
+
 int main()
 {
     flash
 
     int n,m;
     cin >> n >> m;
-    bool flag[n+20]={0};
 
-    while(m--)
+    for(int i=1;i<=n;++i) cin >> cost[i];
+
+    for(int i=0;i<m;++i)
     {
         int x,y;
         cin >> x >> y;
-        flag[x]=1;
-        flag[y]=1;
+        v[x].pb(y);
+        v[y].pb(x);
     }
 
-    int ans=0;
+    ll ans=0;
 
     for(int i=1;i<=n;++i)
     {
-        if(flag[i]==0)
+        if(!vis[i])
         {
-            ans=i;
-            break;
+            cst=INT_MAX;
+            dfs(i);
+            ans+=cst;
         }
+
     }
 
-    cout << n-1 << endl;
-
-    for(int i=1;i<=n;++i)
-    {
-        if(i==ans) continue;
-        else cout << ans << " " << i << endl;
-    }
+    cout << ans << endl;
 
     return 0;
+
 }
